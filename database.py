@@ -1,18 +1,12 @@
 from deta import Deta
 import os
-# from dotenv import load_dotenv
+import streamlit as st
 
 
-# load_dotenv(".env")
+deta = Deta(st.secrets["DETA_KEY"])
 
-# DETA_KEY = os.getenv("DETA_KEY")
+deta1 = Deta(st.secrets["DETA_KEY2"])
 
-# DETA_KEY2 = os.getenv("DETA_KEY2")
-
-
-deta = Deta("d0yumrp3_uStVNh2ve8EqME4dfK45SKu7bxFNTVLX")
-
-deta1 = Deta("d0yumrp3_uStVNh2ve8EqME4dfK45SKu7bxFNTVLX")
 
 datab = deta.Base("slangs")
 
