@@ -7,6 +7,56 @@ import database as db
 from datetime import datetime
 import re
 import uuid
+from deta import Deta
+import os
+
+
+
+
+# DETA_KEY = st.secrets["dkey"]
+
+# DETA_KEY2 = st.secrets["dkey2"]
+
+
+deta = Deta(st.secrets["DETA_KEY"])
+
+deta1 = Deta(st.secrets["DETA_KEY2"])
+
+datab = deta.Base("slangs")
+
+usrdb = deta1.Base("login_id")
+
+
+# Functions related to admin page-
+
+# def insert_new_admin(username,name,password):
+
+#   return usrdb.put({"key":username,"Name":name,"Password":password})
+ 
+
+def fetch_admin_details():
+
+  res = usrdb.fetch()
+
+  return res.items
+
+
+# Functions related to home page-
+
+def insert_values(key,slang_name,slang_desc, rank_value):
+
+  return datab.put({"key":key,"Slang":slang_name,"Desc":slang_desc, "rank":rank_value})
+ 
+
+def fetch_details():
+
+  res = datab.fetch()
+
+  return res.items
+
+
+
+
 
 # Page configration
 st.set_page_config(
@@ -155,7 +205,7 @@ new_slang_desc = st.text_input('Desc',key=2)
 flag = 0
 if new_slang_name!="" and new_slang_desc!="":
 
-    data_fetched = db.fetch_details()
+    data_fetched = fetch_details()
     for item in data_fetched:  
         
         if new_slang_name.lower()==item["Slang"] or new_slang_desc.lower()==item["Desc"]:
@@ -166,7 +216,7 @@ if new_slang_name!="" and new_slang_desc!="":
 
     if flag == 0:
         uid = uuid.uuid4()
-        db.insert_values(str(uid), new_slang_name.lower(), new_slang_desc.lower(), 0)
+        insert_values(str(uid), new_slang_name.lower(), new_slang_desc.lower(), 0)
         st.success("Congrats for contributing to Sevobee!!!")
 
 

@@ -3,11 +3,59 @@ import base64
 from PIL import Image
 import streamlit as st
 import pandas as pd
-import database as db
 from datetime import datetime
 import re
 import uuid
 import altair as alt
+from deta import Deta
+import os
+
+
+
+# DETA_KEY = st.secrets["dkey"]
+
+# DETA_KEY2 = st.secrets["dkey2"]
+
+
+deta = Deta(st.secrets["DETA_KEY"])
+
+deta1 = Deta(st.secrets["DETA_KEY2"])
+
+datab = deta.Base("slangs")
+
+usrdb = deta1.Base("login_id")
+
+
+# Functions related to admin page-
+
+# def insert_new_admin(username,name,password):
+
+#   return usrput({"key":username,"Name":name,"Password":password})
+ 
+
+def fetch_admin_details():
+
+  res = usrfetch()
+
+  return res.items
+
+
+# Functions related to home page-
+
+def insert_values(key,slang_name,slang_desc, rank_value):
+
+  return datab.put({"key":key,"Slang":slang_name,"Desc":slang_desc, "rank":rank_value})
+ 
+
+def fetch_details():
+
+  res = datab.fetch()
+
+  return res.items
+
+
+
+
 
 # Page configration
 st.set_page_config(
@@ -146,7 +194,7 @@ def translator(user_string):
         # Removing Special Characters.
         _str = re.sub('[^a-zA-Z0-9-_.]', '', _str)
         
-        all_slangs = db.fetch_details()
+        all_slangs = fetch_details()
         for item in all_slangs:
          
             if _str.lower() == item["Slang"]:
@@ -178,7 +226,7 @@ header1("Slang Translator")
 
 header3("Real-time ranking of most searched slang on Sevobee")
 
-all_data = list(db.fetch_details())
+all_data = list(fetch_details())
 
 
 # all_slangs = [d['Slang'] for d in all_data]
@@ -239,7 +287,7 @@ if slang!="":
     for s in slang_d:
         col1.text(f"{idx}. {s}")
         idx+=1
-        data_fetched = db.fetch_details()
+        data_fetched = fetch_details()
         for item in data_fetched:  
         
             if s.lower()==item["Slang"]:
@@ -247,11 +295,11 @@ if slang!="":
                 # updating ranking of slangs-
 
                 key_value = item["key"]
-                existing_record = db.datab.get(key_value)
+                existing_record = datab.get(key_value)
                 existing_rank_value = existing_record["rank"]
                 new_rank_value = existing_rank_value + 1
                 existing_record["rank"] = new_rank_value
-                db.datab.put(existing_record)
+                datab.put(existing_record)
 
                 col2.text(item["Desc"])
 
@@ -274,7 +322,7 @@ if slang!="":
 # flag = 0
 # if new_slang_name!="" and new_slang_desc!="":
 
-#     data_fetched = db.fetch_details()
+#     data_fetched = fetch_details()
 #     for item in data_fetched:  
         
 #         if new_slang_name.lower()==item["Slang"] or new_slang_desc.lower()==item["Desc"]:
@@ -285,7 +333,7 @@ if slang!="":
 
 #     if flag == 0:
 
-#         db.insert_values(new_slang_name.lower(),new_slang_desc.lower())
+#         insert_values(new_slang_name.lower(),new_slang_desc.lower())
 #         st.success("Congrats for contributing to Sevobee!!!")
 
 
