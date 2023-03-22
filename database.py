@@ -3,10 +3,15 @@ import os
 import streamlit as st
 
 
+
+# DETA_KEY = st.secrets["dkey"]
+
+# DETA_KEY2 = st.secrets["dkey2"]
+
+
 deta = Deta(st.secrets["DETA_KEY"])
 
 deta1 = Deta(st.secrets["DETA_KEY2"])
-
 
 datab = deta.Base("slangs")
 

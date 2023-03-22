@@ -8,6 +8,8 @@ from datetime import datetime
 import re
 import uuid
 from transformers import pipeline
+from gensim.summarization import summarize
+
 
 # Page configration
 st.set_page_config(
@@ -151,26 +153,22 @@ st.markdown("<br>",unsafe_allow_html=True)
 
 
 @st.cache(allow_output_mutation = True)
-def load_model():
-    # Initialize the summarization pipeline
-    summarizer = pipeline("summarization", model="./saved_models/")
-    return summarizer
+def load_model(text,ratio):
+    summary = summarize(text, ratio=ratio)
+    return summary
 
 # # Save the model and tokenizer to a directory
 # summarizer.save_pretrained("./saved_models/")
-summarizer = load_model()
 
-text = st.text_area("Enter the text you want to summarize", max_chars = 100000, placeholder="Type your text here...")
 
-# min_length = st.slider("Choose minimum length-",0,50,100)
+text = st.text_area("Enter the text you want to summarize", max_chars = 100000, placeholder="Type your text here...", height=400)
+text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
+ratio_length = st.slider("Choose minimum length-", 0.0, 1.0, 0.1, format="%f")
 
-# max_length = st.slider("Choose maximum length-",0,50,100)
-
+summary = load_model(text, ratio_length)
 if st.button("Submit"):
 
-    result = summarizer(text, do_sample=False)
-    final_result = result[0]["summary_text"]
-    st.success(final_result)
+    st.success(summary)
 
 
 

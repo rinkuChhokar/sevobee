@@ -5,7 +5,7 @@ import database as db
 import pandas as pd
 import altair as alt
 import matplotlib.pyplot as plt
-
+import hashlib
 # example
 
 
