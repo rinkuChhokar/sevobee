@@ -1,12 +1,17 @@
 from PIL import Image
 import base64
 import streamlit as st
-import database as db
+
 import pandas as pd
 import altair as alt
 import matplotlib.pyplot as plt
 # import hashlib
 # example
+import sys
+sys.path.insert(0, "../")
+from database import *
+
+
 
 
 
