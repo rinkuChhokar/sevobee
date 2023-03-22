@@ -96,7 +96,7 @@ def callback():
 
 
 
-data = db.fetch_details()
+data = fetch_details()
 
 res = pd.DataFrame.from_dict(data)
 
@@ -112,7 +112,7 @@ submit_button = st.button("Submit",on_click = callback)
 
 # user-details
 
-user_details = db.fetch_admin_details()
+user_details = fetch_admin_details()
 
 if 'button_click' not in st.session_state:
 
@@ -171,7 +171,7 @@ if (submit_button or st.session_state.button_click):
         st.markdown("<br>",unsafe_allow_html=True)
 
         header3("Real-time Ranking")
-        all_data = list(db.fetch_details())
+        all_data = list(fetch_details())
 
         df = pd.DataFrame(all_data)
         df_top10 = df.sort_values(by='rank', ascending=False).head(10)
@@ -203,7 +203,7 @@ if (submit_button or st.session_state.button_click):
                 key_value = st.text_input("Enter key here")
                 if key_value!="":
 
-                    db.datab.delete(key_value)
+                    datab.delete(key_value)
                     st.success("Successfully deleted!!")
 
 
