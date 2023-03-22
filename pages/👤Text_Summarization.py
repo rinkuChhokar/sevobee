@@ -7,7 +7,6 @@ import database as db
 from datetime import datetime
 import re
 import uuid
-from transformers import pipeline
 from gensim.summarization import summarize
 
 
