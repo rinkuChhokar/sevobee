@@ -74,7 +74,7 @@ col1, col2 = st.columns(2, gap="large")
 with col1:
 
     
-    st.image("https://raw.githubusercontent.com/rinkuChhokar/images/main/iPhone%2014%20Pro%20Space%20Black%20Mockup.png")
+    st.image("https://pbs.twimg.com/media/Fr0Vp2dXsAIocWH?format=jpg&name=medium")
 
 with col2:
 
@@ -93,7 +93,7 @@ col3, col4 = st.columns(2, gap="large")
 with col3:
 
     
-    st.image("https://raw.githubusercontent.com/rinkuChhokar/images/main/iPhone%2014%20Pro%20Space%20Black%20Mockup%402x.png")
+    st.image("https://pbs.twimg.com/media/Fr0VyNdWwAIFKwn?format=jpg&name=large")
 
 with col4:
 
@@ -112,7 +112,7 @@ col5, col6 = st.columns(2, gap="large")
 with col5:
 
     
-    st.image("https://raw.githubusercontent.com/rinkuChhokar/images/main/iPhone%2014%20Pro%20Space%20Black%20Mockup%20(1).png")
+    st.image("https://pbs.twimg.com/media/Fr0UFpUWIAAscH_?format=jpg&name=medium")
 
 with col6:
 
@@ -131,7 +131,7 @@ col7, col8 = st.columns(2, gap="large")
 with col7:
 
     
-    st.image("https://raw.githubusercontent.com/rinkuChhokar/images/main/iPhone%2014%20Pro%20Space%20Black%20Mockup%20(2).png")
+    st.image("https://pbs.twimg.com/media/Fr0VTyNXsAAGRk3?format=jpg&name=medium")
 
 with col8:
 
