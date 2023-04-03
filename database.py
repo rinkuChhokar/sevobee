@@ -13,6 +13,7 @@ deta = Deta(st.secrets["DETA_KEY"])
 
 deta1 = Deta(st.secrets["DETA_KEY2"])
 
+
 datab = deta.Base("slangs")
 
 usrdb = deta1.Base("login_id")

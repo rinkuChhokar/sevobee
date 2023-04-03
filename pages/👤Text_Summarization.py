@@ -27,6 +27,7 @@ video_html = """
           min-width: 100%; 
           min-height: 100%;
          filter: brightness(0.5);
+         object-fit: cover;
 
         }
 

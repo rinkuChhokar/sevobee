@@ -21,6 +21,7 @@ deta = Deta(st.secrets["DETA_KEY"])
 
 deta1 = Deta(st.secrets["DETA_KEY2"])
 
+
 datab = deta.Base("slangs")
 
 usrdb = deta1.Base("login_id")
@@ -74,6 +75,7 @@ video_html = """
           min-width: 100%; 
           min-height: 100%;
          filter: brightness(0.5);
+         object-fit: cover;
 
         }
 

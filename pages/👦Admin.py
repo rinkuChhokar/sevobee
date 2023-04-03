@@ -19,6 +19,7 @@ deta = Deta(st.secrets["DETA_KEY"])
 
 deta1 = Deta(st.secrets["DETA_KEY2"])
 
+
 datab = deta.Base("slangs")
 
 usrdb = deta1.Base("login_id")
@@ -68,7 +69,8 @@ video_html = """
           bottom: 0;
           min-width: 100%; 
           min-height: 100%;
-         filter: brightness(0.8);
+          filter: brightness(0.8);
+          object-fit: cover;
 
         }
 
@@ -242,17 +244,27 @@ if (submit_button or st.session_state.button_click):
         header3("Delete a Record")
         if st.checkbox("Click here"):
 
-            try:
 
-                key_value = st.text_input("Enter key here")
-                if key_value!="":
+            key_value = st.text_input("Enter key here")
+            flag_val = 0
+            if key_value!="":
 
-                    datab.delete(key_value)
-                    st.success("Successfully deleted!!")
+                for item in data:
+
+                    if key_value == item["key"]: 
+
+                        datab.delete(key_value)
+                        st.success("Successfully deleted!!")
+                        flag_val+=1
+                        break
+
+                if flag_val == 0:
+                    st.error("Key not found!!!")
+
+            # else:
+            #     st.error("Enter key value!!!")
 
 
-            except:
-                st.error("Not present!!")
 
 
         st.markdown("<br>",unsafe_allow_html=True)

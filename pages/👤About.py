@@ -17,6 +17,7 @@ video_html = """
           min-width: 100%; 
           min-height: 100%;
          filter: brightness(0.8);
+         object-fit: cover;
 
         }
 
@@ -74,7 +75,7 @@ col1, col2 = st.columns(2, gap="large")
 with col1:
 
     
-    st.image("https://pbs.twimg.com/media/Fr0Vp2dXsAIocWH?format=jpg&name=medium")
+    st.image("https://raw.githubusercontent.com/rinkuChhokar/images/main/sevobee_homepage.png")
 
 with col2:
 
@@ -93,7 +94,7 @@ col3, col4 = st.columns(2, gap="large")
 with col3:
 
     
-    st.image("https://pbs.twimg.com/media/Fr0VyNdWwAIFKwn?format=jpg&name=large")
+    st.image("https://raw.githubusercontent.com/rinkuChhokar/images/main/sevobee_slang_generator.png")
 
 with col4:
 
@@ -112,7 +113,7 @@ col5, col6 = st.columns(2, gap="large")
 with col5:
 
     
-    st.image("https://pbs.twimg.com/media/Fr0UFpUWIAAscH_?format=jpg&name=medium")
+    st.image("https://raw.githubusercontent.com/rinkuChhokar/images/main/sevobee_text.png")
 
 with col6:
 
@@ -131,7 +132,7 @@ col7, col8 = st.columns(2, gap="large")
 with col7:
 
     
-    st.image("https://pbs.twimg.com/media/Fr0VTyNXsAAGRk3?format=jpg&name=medium")
+    st.image("https://raw.githubusercontent.com/rinkuChhokar/images/main/sevobee_admin.png")
 
 with col8:
 
