@@ -278,7 +278,7 @@ if (submit_button or st.session_state.button_click):
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
                 <div class="container">
                     <div>
-                        <a class="btn btn-dark btn-lg btn-block" href="http://localhost:8501/Admin" target="_self" role="button">Log Out</a>
+                        <a class="btn btn-dark btn-lg btn-block" href="https://sevobee.streamlit.app/Admin" target="_self" role="button">Log Out</a>
                     </div>
                 </div>
                 """
